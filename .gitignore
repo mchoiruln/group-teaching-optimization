@@ -2,4 +2,6 @@
 output/*
 
 !.gitkeep
-
+bin
+obj
+*.exe
