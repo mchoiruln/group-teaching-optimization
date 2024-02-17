@@ -8,6 +8,7 @@
 #include <strstream>
 #include <vector>
 #include "rank.h"
+#include "hitungperingkat.h"
 
 using namespace std;
 
@@ -261,11 +262,10 @@ void FungsiTujuan(long double rdm[1000][1000], int rdm2[1000][1000], int findiv[
     // Pengurutan
     int i, j, k;
     int spot = awal;
-    do
-    {
-        vector<int> ranks = computeRanking(convertToVec(rdm+spot, 1, pelanggan));
-        for (i = 0; i < pelanggan; i++)
-        {
+    // do
+    // {
+        // for (i = 0; i < pelanggan; i++)
+        // {
             // int simpan = 0;
             // for (j = 0; j < pelanggan; j++)
             // {
@@ -275,10 +275,10 @@ void FungsiTujuan(long double rdm[1000][1000], int rdm2[1000][1000], int findiv[
                 // }
                 // rdm2[spot][i] = simpan;
             // }
-            rdm2[spot][i] = ranks[i];
-        }
-        spot++;
-    } while (spot < akhir);
+        // }
+        // spot++;
+    // } while (spot < akhir);
+    hitungPeringkatDesc(rdm, rdm2, awal, pelanggan);
     VRPSPD << "\n";
     for (i = awal; i < akhir; i++)
     {

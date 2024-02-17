@@ -5,3 +5,5 @@ output/*
 bin
 obj
 *.exe
+
+gto-project.depend
