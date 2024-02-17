@@ -278,7 +278,7 @@ void FungsiTujuan(long double rdm[1000][1000], int rdm2[1000][1000], int findiv[
         // }
         // spot++;
     // } while (spot < akhir);
-    hitungPeringkatDesc(rdm, rdm2, awal, pelanggan);
+    hitungPeringkatDesc(rdm, rdm2, akhir, pelanggan);
     VRPSPD << "\n";
     for (i = awal; i < akhir; i++)
     {
