@@ -314,22 +314,24 @@ void FungsiTujuan(long double rdm[1000][1000], int rdm2[1000][1000], int findiv[
         // VRPSPD<<"\n\tx"<<i+1<<"\t";
         permintaan = kap_awal;
         beban = kap_awal;
+        // VRPSPD<<"\n\tKapasitas: "<< kap_awal <<"\n\t";
         rute_tempuh[i][jumlah_rute[i]][0] = 0;
         hitung_titik = 0;
         for (j = 0; j < pelanggan; j++)
         {
-            permintaan = permintaan - datapd[rdm2[i][j] + 1][0];
+            // VRPSPD<< "\nPERMINTAAN: " <<permintaan<<"\n";
+            permintaan = permintaan - datapd[rdm2[i][j]][0];
             beban = beban - datapd[rdm2[i][j] + 1][0] + datapd[rdm2[i][j] + 1][1];
             hitung_titik++;
             // banyak_titik[i][jumlah_rute[i]]=hitung_titik;
-            rute_tempuh[i][jumlah_rute[i]][hitung_titik] = rdm2[i][j] + 1;
+            rute_tempuh[i][jumlah_rute[i]][hitung_titik] = rdm2[i][j];
             // VRPSPD<<rute_tempuh[i][jumlah_rute[i]][hitung_titik]<<"-";
             if (pelanggan - j != 1)
             {
-                if (permintaan < datapd[rdm2[i][j + 1] + 1][0] || beban - datapd[rdm2[i][j + 1] + 1][0] + datapd[rdm2[i][j + 1] + 1][1] > kapasitas)
+                if (permintaan < datapd[rdm2[i][j + 1]][0] || beban - datapd[rdm2[i][j + 1]][0] + datapd[rdm2[i][j + 1]][1] > kapasitas)
                 {
-                    // VRPSPD<<" --> berhenti permintaan: "<<permintaan<<" dan beban: "<<beban<<" serta data: "<<datapd[rdm2[i][j+1]+1][0]<<" --> "<<rdm2[i][j+1]+1<<"\n";
-                    rute_tempuh[i][jumlah_rute[i]][hitung_titik] = rdm2[i][j] + 1;
+                    // VRPSPD<<" --> berhenti permintaan: "<<permintaan<<" dan beban: "<<beban<<" serta data: "<<datapd[rdm2[i][j+1]][0]<<" --> "<<rdm2[i][j+1]<<"\n";
+                    rute_tempuh[i][jumlah_rute[i]][hitung_titik] = rdm2[i][j];
                     hitung_titik++;
                     banyak_titik[i][jumlah_rute[i]] = hitung_titik;
                     rute_tempuh[i][jumlah_rute[i]][hitung_titik] = 0;
@@ -408,9 +410,10 @@ int SolusiTerbaik(long double rdm[1000][1000], int rdm2[1000], int findiv[1000])
             rdm2[i] = simpan;
         }
     }
+    VRPSPD << "\n\tmurid" << "\ttujuan" << "\turutan";
     for (i = 0; i < nmurid; i++)
     {
-        VRPSPD << "\n\tx" << i + 1 << "\t" << rdm2[i];
+        VRPSPD << "\n\tx" << i + 1 << "\t" << findiv[i] << "\t" << rdm2[i]+1;
         if (rdm2[i] == 0)
         {
             tunjuk = i;
